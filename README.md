@@ -1,1 +1,340 @@
 # APEAX-ACADEMY
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500&family=DM+Mono:wght@400&display=swap');
+:root{--bg:#090909;--s1:#111;--s2:#181818;--s3:#222;--b0:rgba(255,255,255,.055);--b1:rgba(255,255,255,.11);--t1:#ececec;--t2:#787878;--t3:#3e3e3e;--a:#c4a882;--ad:rgba(196,168,130,.07);--ab:rgba(196,168,130,.2);--r:12px}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--t1);font-family:'Inter',-apple-system,sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body::after{content:'';position:fixed;inset:0;opacity:.016;pointer-events:none;z-index:9;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px}
+::-webkit-scrollbar{width:3px;height:3px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--t3);border-radius:2px}
+nav{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:100;background:rgba(9,9,9,.78);backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);border:1px solid var(--b0);border-radius:100px;padding:9px 10px 9px 20px;display:flex;align-items:center;gap:6px;max-width:860px;width:calc(100% - 28px)}
+.nb{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:3px;color:var(--a);text-transform:uppercase;white-space:nowrap;padding-right:14px;border-right:1px solid var(--b0);margin-right:4px;flex-shrink:0}
+.nlw{display:flex;gap:2px;flex:1;overflow:hidden}
+.nl{color:var(--t2);text-decoration:none;font-size:.71rem;font-weight:500;padding:7px 11px;border-radius:100px;transition:all .18s;white-space:nowrap}
+.nl:hover{color:var(--t1)}.nl.on{background:var(--s3);color:var(--t1)}
+#home{min-height:100vh;position:relative;display:flex;flex-direction:column;justify-content:center;padding:80px;overflow:hidden}
+.hgrid{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.017) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.017) 1px,transparent 1px);background-size:80px 80px;-webkit-mask-image:radial-gradient(ellipse 75% 75% at 50% 50%,#000,transparent);mask-image:radial-gradient(ellipse 75% 75% at 50% 50%,#000,transparent)}
+.hglw{position:absolute;width:960px;height:960px;border-radius:50%;background:radial-gradient(circle,rgba(196,168,130,.042) 0%,transparent 65%);top:-240px;right:-180px;pointer-events:none;animation:amb 16s ease-in-out infinite alternate}
+@keyframes amb{0%{transform:translate(0,0)}100%{transform:translate(45px,30px)}}
+.hi{position:relative;z-index:2}
+.hey{display:flex;align-items:center;gap:10px;margin-bottom:22px;opacity:0;animation:up .7s .15s ease both}
+.hdot{width:5px;height:5px;background:var(--a);border-radius:50%;flex-shrink:0}
+.hey span{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:4px;text-transform:uppercase;color:var(--t2)}
+.htit{font-family:'Playfair Display',serif;font-size:clamp(5rem,12vw,10.5rem);font-weight:900;line-height:.88;letter-spacing:-.045em;margin-bottom:30px;opacity:0;animation:up .9s .28s ease both}
+.htit .r1{display:block;color:var(--t1)}.htit .r2{display:block;color:var(--t2);font-style:italic;font-weight:400}
+.hm{display:flex;align-items:flex-start;gap:64px;margin-bottom:52px;opacity:0;animation:up .8s .46s ease both}
+.htag{color:var(--t2);font-size:.86rem;line-height:1.85;max-width:300px;font-weight:300}
+.hss{display:flex;gap:36px}.hs{display:flex;flex-direction:column;gap:3px}
+.hsn{font-family:'Playfair Display',serif;font-size:2.1rem;font-weight:700;color:var(--t1);letter-spacing:-.03em}
+.hsl{font-family:'DM Mono',monospace;font-size:.58rem;color:var(--t3);text-transform:uppercase;letter-spacing:2px}
+.hb{display:flex;gap:10px;opacity:0;animation:up .8s .62s ease both}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:11px 24px;border-radius:100px;font-size:.77rem;font-weight:500;cursor:pointer;text-decoration:none;border:none;transition:all .2s;font-family:inherit;letter-spacing:.25px}
+.bs{background:var(--t1);color:#000}.bs:hover{background:#d4d4d4}
+.bg{background:transparent;color:var(--t2);border:1px solid var(--b0)}.bg:hover{border-color:var(--b1);color:var(--t1)}
+.stk{position:absolute;bottom:34px;left:80px;display:flex;align-items:center;gap:10px;color:var(--t3);font-size:.58rem;letter-spacing:2.5px;text-transform:uppercase;font-family:'DM Mono',monospace;opacity:0;animation:up .8s 1.1s ease both}
+.stl{width:26px;height:1px;background:var(--t3);position:relative;overflow:hidden}.stl::after{content:'';position:absolute;left:-100%;width:100%;height:100%;background:var(--a);animation:sl 2.8s 1.8s ease-in-out infinite}
+@keyframes sl{0%{left:-100%}100%{left:100%}}
+.sdiv{height:1px;background:var(--b0);margin:0 80px}
+.sec{padding:108px 80px 92px;max-width:1400px;margin:0 auto}
+.se{display:inline-flex;align-items:center;gap:9px;font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:3.5px;text-transform:uppercase;color:var(--t2);margin-bottom:15px}
+.se::before{content:'';width:14px;height:1px;background:var(--a);flex-shrink:0}
+.st{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.4rem);font-weight:700;line-height:1.05;letter-spacing:-.025em;margin-bottom:10px}
+.ss{color:var(--t2);font-size:.84rem;line-height:1.8;max-width:420px;font-weight:300}.sh{margin-bottom:50px}
+.fb{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:32px}
+.fbn{background:transparent;border:1px solid var(--b0);color:var(--t2);padding:6px 14px;border-radius:100px;font-size:.7rem;cursor:pointer;transition:all .18s;font-family:inherit}
+.fbn:hover{border-color:var(--b1);color:var(--t1)}.fbn.on{background:var(--t1);color:#000;border-color:transparent}
+.eg{display:grid;grid-template-columns:repeat(auto-fill,minmax(265px,1fr));gap:12px}
+.ec{background:var(--s1);border:1px solid var(--b0);border-radius:var(--r);overflow:hidden;cursor:pointer;transition:all .22s}
+.ec:hover{border-color:var(--b1);transform:translateY(-4px)}.ec.hd{display:none}
+.et{height:150px;position:relative;display:flex;align-items:center;justify-content:center;font-size:2.2rem}
+.etg{position:absolute;top:10px;left:10px;background:rgba(0,0,0,.52);border:1px solid var(--b0);color:var(--t2);font-size:.56rem;letter-spacing:2px;text-transform:uppercase;padding:3px 8px;border-radius:100px;font-family:'DM Mono',monospace}
+.eyr{position:absolute;top:10px;right:10px;color:var(--a);font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:1px}
+.ebo{padding:17px}.ett{font-family:'Playfair Display',serif;font-size:.97rem;font-weight:600;margin-bottom:5px}
+.ede{color:var(--t2);font-size:.74rem;line-height:1.65;margin-bottom:13px}
+.efo{display:flex;justify-content:space-between;align-items:center;font-size:.66rem;color:var(--t3);padding-top:11px;border-top:1px solid var(--b0)}
+.ear{color:var(--a);transition:transform .18s}.ec:hover .ear{transform:translateX(4px)}
+.ag{display:grid;grid-template-columns:repeat(auto-fill,minmax(225px,1fr));gap:11px}
+.ac{background:var(--bg);border:1px solid var(--b0);border-radius:var(--r);padding:22px;transition:all .22s;position:relative;overflow:hidden}
+.ac::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,var(--a),transparent 60%);opacity:0;transition:opacity .22s}
+.ac:hover{border-color:var(--b1);transform:translateY(-3px)}.ac:hover::before{opacity:1}
+.ai{font-size:1.5rem;margin-bottom:12px}.at{font-family:'Playfair Display',serif;font-size:.93rem;font-weight:600;margin-bottom:5px}
+.ad{color:var(--t2);font-size:.72rem;line-height:1.65;margin-bottom:12px}.am{display:flex;justify-content:space-between;align-items:center}
+.ayr{font-family:'DM Mono',monospace;font-size:.58rem;color:var(--a);letter-spacing:1px}.act{font-size:.56rem;letter-spacing:2px;text-transform:uppercase;color:var(--t3)}
+.vg{display:grid;grid-template-columns:repeat(auto-fill,minmax(285px,1fr));gap:12px}
+.vc{background:var(--s1);border:1px solid var(--b0);border-radius:var(--r);padding:26px;transition:border-color .2s}.vc:hover{border-color:var(--b1)}
+.vqm{font-family:'Playfair Display',serif;font-size:3rem;color:var(--t3);line-height:1;display:block;margin-bottom:10px}
+.vq{color:rgba(236,236,236,.82);font-size:.84rem;line-height:1.85;margin-bottom:20px;font-weight:300}
+.vau{display:flex;align-items:center;gap:10px;padding-top:16px;border-top:1px solid var(--b0)}
+.vav{width:34px;height:34px;border-radius:50%;background:var(--s3);border:1px solid var(--b0);display:flex;align-items:center;justify-content:center;font-size:.66rem;font-weight:600;color:var(--a);flex-shrink:0}
+.vn{font-size:.8rem;font-weight:500;margin-bottom:2px}.vm{font-size:.64rem;color:var(--t3);display:flex;gap:6px;align-items:center}
+.vtg{background:var(--ad);border:1px solid var(--ab);color:var(--a);font-size:.55rem;padding:2px 7px;border-radius:100px;letter-spacing:1.5px;text-transform:uppercase}
+.sg{display:grid;grid-template-columns:repeat(auto-fill,minmax(295px,1fr));gap:12px}
+.sc{background:var(--bg);border:1px solid var(--b0);border-radius:var(--r);overflow:hidden;transition:all .22s}.sc:hover{border-color:var(--b1);transform:translateY(-3px)}
+.sth{height:165px;background:var(--s2);display:flex;align-items:center;justify-content:center;cursor:pointer;position:relative}
+.spl{width:48px;height:48px;background:rgba(196,168,130,.1);border:1px solid var(--ab);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.85rem;transition:all .2s;color:var(--a)}
+.sth:hover .spl{background:rgba(196,168,130,.22);transform:scale(1.08)}
+.syl{position:absolute;bottom:10px;right:12px;font-family:'DM Mono',monospace;font-size:.56rem;color:var(--t3);letter-spacing:2px}
+.sbo{padding:17px}.stt{font-family:'Playfair Display',serif;font-size:.93rem;font-weight:600;margin-bottom:4px}
+.sskr{font-size:.63rem;color:var(--a);margin-bottom:8px;font-family:'DM Mono',monospace}
+.sex{color:var(--t2);font-size:.74rem;line-height:1.65;font-style:italic}
+.gm{columns:4;gap:10px}
+.gi{break-inside:avoid;margin-bottom:10px;border-radius:10px;overflow:hidden;position:relative;cursor:pointer;border:1px solid var(--b0);transition:border-color .22s}.gi:hover{border-color:var(--b1)}
+.gth{width:100%;display:flex;align-items:center;justify-content:center;font-size:2rem;transition:transform .28s}.gi:hover .gth{transform:scale(1.04)}
+.gov{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.82),transparent 60%);display:flex;flex-direction:column;justify-content:flex-end;padding:13px;opacity:0;transition:opacity .22s}.gi:hover .gov{opacity:1}
+.gvt{font-size:.74rem;font-weight:500;margin-bottom:1px}.gvy{font-size:.58rem;color:var(--a);font-family:'DM Mono',monospace;letter-spacing:1px}
+#tlsec{overflow:hidden}.tlhd{padding:108px 80px 0;max-width:1400px;margin:0 auto}
+.tlscr{overflow-x:auto;overflow-y:visible;padding:64px 80px 80px;cursor:grab;user-select:none;scrollbar-width:thin;scrollbar-color:var(--t3) transparent}
+.tlscr:active{cursor:grabbing}
+.tltr{display:flex;position:relative;min-width:max-content;padding-top:72px}
+.tlax{position:absolute;top:35px;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--b0) 6%,var(--b0) 94%,transparent)}
+.tlcol{width:265px;flex-shrink:0;display:flex;flex-direction:column;align-items:center;position:relative}
+.tldt{width:8px;height:8px;background:var(--t3);border-radius:50%;position:absolute;top:31px;z-index:2;transition:all .25s}
+.tlcol:hover .tldt{background:var(--a);box-shadow:0 0 0 4px rgba(196,168,130,.14)}
+.tlyr{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;letter-spacing:-.035em;color:var(--t3);margin-bottom:54px;transition:color .25s}
+.tlcol:hover .tlyr{color:var(--t1)}.tlevs{display:flex;flex-direction:column;gap:8px;width:232px}
+.tlev{background:var(--s1);border:1px solid var(--b0);border-radius:9px;padding:12px 14px;transition:all .2s}
+.tlev:hover{border-color:var(--b1);transform:translateX(3px)}
+.tlei{font-size:.95rem;margin-bottom:5px}.tlet{font-size:.74rem;font-weight:600;margin-bottom:3px}.tled{color:var(--t2);font-size:.66rem;line-height:1.5}
+.ft{border-top:1px solid var(--b0);padding:34px 80px;display:flex;justify-content:space-between;align-items:center;max-width:1400px;margin:0 auto}
+.ftn{font-family:'Playfair Display',serif;font-size:.97rem;color:var(--t1)}.ftr{font-size:.58rem;color:var(--t3);font-family:'DM Mono',monospace;letter-spacing:1px}
+.rv{opacity:0;transform:translateY(18px);transition:opacity .5s ease,transform .5s ease}.rv.vis{opacity:1;transform:translateY(0)}
+@keyframes up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:720px){.nb,.nl:nth-child(n+5){display:none}.sdiv{margin:0 20px}.sec,.tlhd{padding-left:20px;padding-right:20px}#home{padding:80px 20px 80px}.stk{left:20px}.hm{flex-direction:column;gap:24px}.hss{gap:20px}.gm{columns:2}.tlscr{padding-left:20px;padding-right:20px}.ft{padding:28px 20px;flex-direction:column;gap:10px;text-align:center}}
+</style>
+
+<nav id="nav">
+  <div class="nb">Apex Academy</div>
+  <div class="nlw">
+    <a href="#home" class="nl on">Home</a>
+    <a href="#events" class="nl">Events</a>
+    <a href="#achievements" class="nl">Achievements</a>
+    <a href="#voices" class="nl">Voices</a>
+    <a href="#speeches" class="nl">Speeches</a>
+    <a href="#gallery" class="nl">Gallery</a>
+    <a href="#tlsec" class="nl">Timeline</a>
+  </div>
+</nav>
+
+<section id="home">
+  <div class="hgrid"></div>
+  <div class="hglw"></div>
+  <div class="hi">
+    <div class="hey"><div class="hdot"></div><span>Est. 2018 · School of Excellence</span></div>
+    <h1 class="htit"><span class="r1">APEX</span><span class="r2">Academy</span></h1>
+    <div class="hm">
+      <p class="htag">A living archive of every achievement, every voice, and every moment that made Apex Academy what it is today.</p>
+      <div class="hss">
+        <div class="hs"><span class="hsn" data-target="6">0</span><span class="hsl">Years</span></div>
+        <div class="hs"><span class="hsn" data-target="40">0</span><span class="hsl">Events</span></div>
+        <div class="hs"><span class="hsn" data-target="1200">0</span><span class="hsl">Students</span></div>
+        <div class="hs"><span class="hsn" data-target="32">0</span><span class="hsl">Awards</span></div>
+      </div>
+    </div>
+    <div class="hb">
+      <a href="#tlsec" class="btn bs">Explore Timeline →</a>
+      <a href="#events" class="btn bg">View Events</a>
+    </div>
+  </div>
+  <div class="stk"><div class="stl"></div>Scroll to explore</div>
+</section>
+
+<div class="sdiv"></div>
+<div id="events"><div class="sec">
+  <div class="sh rv">
+    <div class="se">Events & Festivals</div>
+    <h2 class="st">Every Event, Archived</h2>
+    <p class="ss">From annual celebrations to impromptu festivals — a complete record of the moments that shaped the school.</p>
+  </div>
+  <div class="fb rv">
+    <button class="fbn on" data-f="all">All</button>
+    <button class="fbn" data-f="cultural">Cultural</button>
+    <button class="fbn" data-f="sports">Sports</button>
+    <button class="fbn" data-f="festival">Festival</button>
+    <button class="fbn" data-f="academic">Academic</button>
+    <button class="fbn" data-f="special">Special</button>
+  </div>
+  <div class="eg" id="eg"></div>
+</div></div>
+
+<div class="sdiv"></div>
+<div id="achievements" style="background:var(--s1)"><div class="sec">
+  <div class="sh rv">
+    <div class="se">Recognition</div>
+    <h2 class="st">Achievements Wall</h2>
+    <p class="ss">Honours earned, competitions won, recognition received — every accolade in one place.</p>
+  </div>
+  <div class="ag" id="ag"></div>
+</div></div>
+
+<div class="sdiv"></div>
+<div id="voices"><div class="sec">
+  <div class="sh rv">
+    <div class="se">Student Voices</div>
+    <h2 class="st">In Their Own Words</h2>
+    <p class="ss">The people who lived it, shaped it, and carry it forward — speaking for themselves.</p>
+  </div>
+  <div class="vg" id="vg"></div>
+</div></div>
+
+<div class="sdiv"></div>
+<div id="speeches" style="background:var(--s1)"><div class="sec">
+  <div class="sh rv">
+    <div class="se">Speeches & Moments</div>
+    <h2 class="st">Words That Stayed</h2>
+    <p class="ss">Addresses, farewells, and keynotes that captured the spirit of Apex Academy at its most resonant.</p>
+  </div>
+  <div class="sg" id="sg"></div>
+</div></div>
+
+<div class="sdiv"></div>
+<div id="gallery"><div class="sec">
+  <div class="sh rv">
+    <div class="se">Gallery & Edits</div>
+    <h2 class="st">Frames & Reels</h2>
+    <p class="ss">Festival edits, event highlights, and candid moments — organized by year. Swap placeholders with your YouTube or Instagram reels.</p>
+  </div>
+  <div class="gm" id="gm"></div>
+</div></div>
+
+<div class="sdiv"></div>
+<div id="tlsec">
+  <div class="tlhd">
+    <div class="sh rv">
+      <div class="se">Timeline</div>
+      <h2 class="st">The APEX Story, Year by Year</h2>
+      <p class="ss">Drag to explore six years of milestones, memories, and defining moments that built this school's legacy.</p>
+    </div>
+  </div>
+  <div class="tlscr" id="tls">
+    <div class="tltr" id="tlt"><div class="tlax"></div></div>
+  </div>
+</div>
+
+<footer><div class="ft">
+  <div class="ftn">Apex Academy</div>
+  <div class="ftr">School Memories Archive · 2018 – 2024</div>
+</div></footer>
+
+<script>
+const G=['linear-gradient(145deg,#141218,#1c1824)','linear-gradient(145deg,#14160f,#1e2016)','linear-gradient(145deg,#0f1518,#151f22)','linear-gradient(145deg,#181411,#221c18)','linear-gradient(145deg,#141018,#1b1422)','linear-gradient(145deg,#141611,#1c2018)','linear-gradient(145deg,#181518,#241e24)','linear-gradient(145deg,#111418,#17191e)','linear-gradient(145deg,#171412,#211c1a)'];
+
+const evD=[
+  {e:'🎭',t:'cultural',y:'2024',tt:'Annual Celebrations 2024',d:'A spectacular evening of performances, art, and recognition as APEX honoured excellence across every discipline.',n:'120+ performers'},
+  {e:'🏆',t:'sports',y:'2024',tt:'Inter-School Sports Meet',d:'Students competed across 12 disciplines, bringing home 7 gold medals in the district competition.',n:'7 gold medals'},
+  {e:'🔬',t:'academic',y:'2023',tt:'Science Olympiad 2023',d:'A rigorous two-day showcase of scientific inquiry — 40 projects presented, 3 advancing to nationals.',n:'40 projects'},
+  {e:'🎪',t:'festival',y:'2023',tt:'Spectrum Cultural Fest',d:'Three days of music, dance, theatre, and visual arts drawing over 2,000 visitors to campus.',n:'2,000+ visitors'},
+  {e:'🍛',t:'festival',y:'2023',tt:'Global Food Festival',d:'Students represented 18 different cuisines, turning the campus into a world of flavour and culture.',n:'18 cuisines'},
+  {e:'🌙',t:'special',y:'2022',tt:'Farewell Night 2022',d:'An emotional evening honouring the graduating batch — tributes, performances, and unforgettable farewells.',n:'Graduating batch'},
+  {e:'🎤',t:'cultural',y:'2022',tt:'Annual Day 2022',d:'Chief Guest felicitated top performers; the entire evening crafted and directed entirely by students.',n:'200+ on stage'},
+  {e:'⚽',t:'sports',y:'2021',tt:'Sports Day 2021',d:"APEX's first full-scale post-2020 sports event — a celebration of resilience and athletic spirit.",n:'8 disciplines'},
+  {e:'🎵',t:'cultural',y:'2021',tt:'Musical Revue',d:"APEX's first interdisciplinary concert — classical meets contemporary in an evening of pure artistry.",n:'First ever'},
+];
+
+const achD=[
+  {i:'🏆',t:'State Science Olympiad Champions',d:'First place among 180 schools statewide — three students advanced to the national finals.',y:'2024',c:'Academic'},
+  {i:'🥇',t:'Best School Trophy',d:'Awarded by the District Education Board for overall excellence in academics, sports, and culture.',y:'2024',c:'Recognition'},
+  {i:'🎙️',t:'National Debate Champions',d:'APEX debaters claimed the National Interschool Debate Championship for the second consecutive year.',y:'2023',c:'Academic'},
+  {i:'⚽',t:'District Football Champions',d:'The APEX Football team went unbeaten across 9 matches to claim the district league title.',y:'2023',c:'Sports'},
+  {i:'🎨',t:'National Art Competition — 1st',d:"Shradha R. won first place at Rang 2022, India's largest national student art competition.",y:'2022',c:'Arts'},
+  {i:'📚',t:'Academic Excellence Award',d:'Conferred by the State Board for maintaining 98%+ average results for three consecutive years.',y:'2022',c:'Academic'},
+  {i:'🤝',t:'Community Impact Recognition',d:"Awarded by the city municipality for APEX's 200-hour annual community outreach initiative.",y:'2021',c:'Social'},
+  {i:'🧪',t:'Regional Quiz Bowl Champions',d:'APEX won both junior and senior categories at the Regional Science & General Knowledge Quiz.',y:'2021',c:'Academic'},
+  {i:'🌿',t:'Green School Certified',d:'Recognised for environmental excellence — solar panels, zero-waste drives, and a school biodiversity garden.',y:'2020',c:'Environment'},
+  {i:'💻',t:'EdTech Innovation Award',d:'Honoured for pioneering digital infrastructure and seamless remote education throughout 2020.',y:'2020',c:'Innovation'},
+];
+
+const voiD=[
+  {q:"APEX didn't just teach me subjects — it taught me how to think, how to lead, and how to show up for what actually matters.",n:'Arjun Mehta',m:'Class of 2024',al:false},
+  {q:"The Cultural Fest was my defining moment. Standing on that stage, I found my voice — and I've never been quiet since.",n:'Priya Nair',m:'Class of 2023',al:false},
+  {q:"Eight years later, I still carry every lesson from this school. APEX built the foundation everything else stands on.",n:'Rahul Verma',m:'Class of 2019',al:true},
+  {q:"The teachers here genuinely cared. Not just about marks — about who we were becoming as people.",n:'Ananya Rao',m:'Class of 2022',al:false},
+  {q:"Winning the state olympiad was incredible, but the real victory was the team that made it possible together.",n:'Kunal Sharma',m:'Class of 2024',al:false},
+  {q:"APEX made me comfortable being curious, asking uncomfortable questions, and never settling for easy answers.",n:'Sneha Iyer',m:'Class of 2020',al:true},
+];
+
+const spD=[
+  {tt:'Annual Day Address 2024',sp:'Dr. Meena Pillai — Principal',y:'2024',ex:'"We don\'t measure this school by the ranks it produces. We measure it by the humans it sets free into the world."'},
+  {tt:'Student Council President Farewell',sp:'Arjun Mehta — Student Council',y:'2023',ex:'"If I could go back and tell my younger self one thing — it would be: get involved. Every single time."'},
+  {tt:'Convocation Address 2022',sp:'Chief Guest: Dr. S. Krishnaswamy',y:'2022',ex:'"The finest education is not information delivered — it is curiosity awakened, permanently."'},
+  {tt:'Valedictory — Farewell Night',sp:'Rohit Desai — Class of 2021',y:'2021',ex:'"We didn\'t just share classrooms. We shared stories, failures, and the ridiculous hope that things would work out."'},
+];
+
+const galD=[
+  {e:'🎭',t:'Annual Day 2024',y:'2024',h:200},{e:'🏆',t:'Sports Meet 2024',y:'2024',h:158},
+  {e:'🎪',t:'Spectrum Fest 2023',y:'2023',h:228},{e:'🔬',t:'Science Olympiad 2023',y:'2023',h:158},
+  {e:'🍛',t:'Food Festival 2023',y:'2023',h:194},{e:'🌙',t:'Farewell Night 2022',y:'2022',h:172},
+  {e:'🎤',t:'Annual Day 2022',y:'2022',h:200},{e:'⚽',t:'Sports Day 2021',y:'2021',h:158},
+  {e:'🎵',t:'Musical Revue 2021',y:'2021',h:218},{e:'💻',t:'Virtual Fest 2020',y:'2020',h:172},
+  {e:'🎨',t:'Art Exhibition 2019',y:'2019',h:158},{e:'🏛️',t:'Foundation Day 2018',y:'2018',h:194},
+];
+
+const tlD=[
+  {y:'2018',ev:[{i:'🏛️',t:'APEX Academy Founded',d:'Doors opened to 180 students with a vision for holistic excellence.'},{i:'🎭',t:'First Annual Day',d:'The inaugural celebration — a humble beginning of a grand tradition.'}]},
+  {y:'2019',ev:[{i:'🔬',t:'First Science Fair',d:'Students showcase 24 independent research projects across disciplines.'},{i:'⚽',t:'Sports Programme Launch',d:'APEX enters district competitions for the very first time.'},{i:'🎨',t:'Art Club Founded',d:'Student-led initiative that now boasts 120+ active members.'}]},
+  {y:'2020',ev:[{i:'💻',t:'Digital Transition',d:'APEX pivots to virtual learning within 72 hours — zero disruption.'},{i:'🌿',t:'Green School Certified',d:'Recognised for environmental leadership and sustainability initiatives.'}]},
+  {y:'2021',ev:[{i:'🏠',t:'Return to Campus',d:'APEX reopens with a careful, student-first hybrid learning model.'},{i:'🎵',t:'First Musical Revue',d:'The celebrated interdisciplinary musical collaboration begins here.'},{i:'🤝',t:'Community Outreach Launch',d:'200+ volunteer hours — an annual tradition born this year.'}]},
+  {y:'2022',ev:[{i:'🏆',t:'First State Championship',d:'APEX wins Best School Trophy — district-wide recognition achieved.'},{i:'🎙️',t:'Debate Programme',d:'National champion team traces its origins to this founding cohort.'}]},
+  {y:'2023',ev:[{i:'🥇',t:'National Debate Champions',d:'Second consecutive national title — APEX debate becomes a dynasty.'},{i:'🎪',t:'Spectrum Fest — Largest Edition',d:'2,000+ attendees, 18 groups, 3 days of pure culture.'},{i:'📈',t:'Record Enrollment',d:'Applications triple — APEX becomes the most sought-after school in the district.'}]},
+  {y:'2024',ev:[{i:'⭐',t:'Six Years of Excellence',d:'APEX commemorates its sixth year with the grandest Annual Day ever.'},{i:'🔬',t:'State Science Champions',d:'First among 180 schools — three students advance to nationals.'},{i:'🌍',t:'International Exchange',d:'APEX partners with schools in 3 countries for cultural exchange.'}]},
+];
+
+function rEv(){document.getElementById('eg').innerHTML=evD.map((v,i)=>`<div class="ec rv" data-type="${v.t}" style="transition-delay:${i*50}ms"><div class="et" style="background:${G[i%G.length]}"><span class="etg">${v.t}</span><span class="eyr">${v.y}</span>${v.e}</div><div class="ebo"><div class="ett">${v.tt}</div><div class="ede">${v.d}</div><div class="efo"><span>${v.n}</span><span class="ear">→</span></div></div></div>`).join('')}
+function rAch(){document.getElementById('ag').innerHTML=achD.map((v,i)=>`<div class="ac rv" style="transition-delay:${i*42}ms"><div class="ai">${v.i}</div><div class="at">${v.t}</div><div class="ad">${v.d}</div><div class="am"><span class="ayr">${v.y}</span><span class="act">${v.c}</span></div></div>`).join('')}
+function rVoi(){document.getElementById('vg').innerHTML=voiD.map((v,i)=>`<div class="vc rv" style="transition-delay:${i*60}ms"><span class="vqm">"</span><p class="vq">${v.q}</p><div class="vau"><div class="vav">${v.n.split(' ').map(w=>w[0]).join('')}</div><div><div class="vn">${v.n}</div><div class="vm">${v.m}${v.al?'<span class="vtg">Alumni</span>':''}</div></div></div></div>`).join('')}
+function rSp(){document.getElementById('sg').innerHTML=spD.map((v,i)=>`<div class="sc rv" style="transition-delay:${i*65}ms"><div class="sth"><div class="spl">▶</div><span class="syl">${v.y}</span></div><div class="sbo"><div class="stt">${v.tt}</div><div class="sskr">${v.sp}</div><div class="sex">${v.ex}</div></div></div>`).join('')}
+function rGal(){document.getElementById('gm').innerHTML=galD.map((v,i)=>`<div class="gi"><div class="gth" style="height:${v.h}px;background:${G[i%G.length]}">${v.e}</div><div class="gov"><div class="gvt">${v.t}</div><div class="gvy">${v.y}</div></div></div>`).join('')}
+
+function rTl(){
+  const tr=document.getElementById('tlt'),ax=tr.querySelector('.tlax');
+  tr.innerHTML='';tr.appendChild(ax);
+  tlD.forEach(yr=>{
+    const c=document.createElement('div');c.className='tlcol';
+    c.innerHTML=`<div class="tlyr">${yr.y}</div><div class="tldt"></div><div class="tlevs">${yr.ev.map(e=>`<div class="tlev"><div class="tlei">${e.i}</div><div class="tlet">${e.t}</div><div class="tled">${e.d}</div></div>`).join('')}</div>`;
+    tr.appendChild(c);
+  });
+}
+
+function initFilter(){
+  document.querySelectorAll('.fbn').forEach(btn=>btn.addEventListener('click',()=>{
+    document.querySelectorAll('.fbn').forEach(b=>b.classList.remove('on'));
+    btn.classList.add('on');
+    const f=btn.dataset.f;
+    document.querySelectorAll('.ec').forEach(c=>c.classList.toggle('hd',f!=='all'&&c.dataset.type!==f));
+  }));
+}
+
+function initReveal(){
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target)}}),{threshold:.08});
+  const obs=()=>document.querySelectorAll('.rv:not(.vis)').forEach(el=>io.observe(el));
+  obs();setTimeout(obs,300);
+}
+
+function initCounters(){
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){animN(e.target);io.unobserve(e.target)}}),{threshold:.6});
+  document.querySelectorAll('[data-target]').forEach(el=>io.observe(el));
+}
+
+function animN(el){
+  const tgt=+el.dataset.target,dur=1600,start=Date.now();
+  (function tick(){
+    const p=Math.min((Date.now()-start)/dur,1),ease=1-Math.pow(1-p,3);
+    el.textContent=Math.round(ease*tgt)+(tgt>10?'+':'');
+    if(p<1)requestAnimationFrame(tick);else el.textContent=tgt+(tgt>10?'+':'');
+  })();
+}
+
+function initDrag(){
+  const el=document.getElementById('tls');let down=false,sx,sl;
+  el.addEventListener('pointerdown',e=>{down=true;sx=e.clientX;sl=el.scrollLeft;el.setPointerCapture(e.pointerId)});
+  el.addEventListener('pointermove',e=>{if(down)el.scrollLeft=sl-(e.clientX-sx)*1.1});
+  el.addEventListener('pointerup',()=>down=false);el.addEventListener('pointercancel',()=>down=false);
+}
+
+function initNav(){
+  const ids=['home','events','achievements','voices','speeches','gallery','tlsec'];
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const h='#'+e.target.id;document.querySelectorAll('.nl').forEach(a=>a.classList.toggle('on',a.getAttribute('href')===h))}}),{threshold:.25,rootMargin:'-5% 0px -65% 0px'});
+  ids.forEach(id=>{const el=document.getElementById(id);if(el)io.observe(el)});
+}
+
+rEv();rAch();rVoi();rSp();rGal();rTl();
+initFilter();initReveal();initCounters();initDrag();initNav();
+</script>
